@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Registration;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Registration;
+use App\Registration;
 
-class SystemController extends Controller
+class RegistrationController extends Controller
 {
     public function system_registration(Request $request)
     {

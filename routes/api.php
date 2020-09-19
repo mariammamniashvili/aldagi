@@ -21,4 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('test', 'Test\TestController@Test');
 Route::get('ebee/{id}', 'Test\TestController@Ebee');
 Route::post('gela', 'Test\TestController@Gela');
-Route::get('Registration', 'System\SystemController@system_registration');
+Route::get('Registration', 'Registration\RegistrationController@system_registration');
