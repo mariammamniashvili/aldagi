@@ -27,3 +27,5 @@ Route::get('GetManufactors', 'Info\GetInfoController@manufactors');
 Route::get('GetCarModels', 'Info\GetInfoController@models');
 Route::get('GetMaxLimit', 'Finance\FinanceController@max_limit');
 Route::get('Bonus', 'Finance\FinanceController@bonus');
+Route::get('User', 'User\RegistartionController@user_registration');
+Route::get('UserList', 'User\RegistartionController@users_list');
