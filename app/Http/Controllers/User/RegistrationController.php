@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User\Registration;
 use App\Helper\Validate;
-class RegistartionController extends Controller
+
+class RegistrationController extends Controller
 {
     public function user_registration(Request $request)
-    {
-       
+    {       
         $this->validate($request,[
             'system_id'=>'required',
             'first_name'=>'required',
@@ -28,6 +28,7 @@ class RegistartionController extends Controller
         if(!Validate::validateEmail($request->email)){
             return response()->json('Email validation failed', 400);
         }
+        
         if(!Validate::validateAge($request->birthday)){
             return response()->json('Age', 400);
         }
@@ -44,6 +45,7 @@ class RegistartionController extends Controller
         $user_registrations->model=$request->model;
         $user_registrations->issue_date=$request->issue_date;
         $user_registrations->registration_number=$request->registration_number;
+        $user_registrations->photo=$request->photo;
         $user_registrations->status=$request->status;
         $res = $user_registrations->save();
         
@@ -54,7 +56,5 @@ class RegistartionController extends Controller
     {
        $users = Registration::wheresystem_id($request->system_id)->paginate($request->page);;
        return response()->json($users, 200);
-    }
-
-   
+    }   
 }

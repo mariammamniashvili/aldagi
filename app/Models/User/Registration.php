@@ -8,7 +8,7 @@ class Registration extends Model
 {
    protected $table = 'users';
    public $primaryKey = 'id';
-   public $system_id = 'system_id';
+   protected $system_id = 'system_id';
    protected $first_name = 'first_name';
    protected $last_name = 'last_name';
    protected $user_id = 'user_id';
@@ -19,6 +19,7 @@ class Registration extends Model
    protected $model = 'model';
    protected $issue_date = 'issue_date';
    protected $registration_number = 'registration_number';
+   protected $photo = 'photo';
    protected $status = 'status';
    public $timestamps = true;
 }

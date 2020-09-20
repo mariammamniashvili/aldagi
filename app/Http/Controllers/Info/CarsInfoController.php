@@ -10,16 +10,18 @@ use App\Models\CarInfo\GetCarModels;
 
 class CarsInfoController extends Controller
 {
-    public function manufactors(Request $request)
+    public function manufactors()
     {
         $manufacturers = GetCarManufacturers::all()->toArray();
         return response()->json($manufacturers, 200);
     }
     
-    public function models(Request $request)
+    public function models($id)
     {
-        $models = GetCarModels::wheremanufacturer_id($request->manufacturer_id)->get();
+        if(!is_int($id)) {
+            return response()->json('Incorect data', 400);
+        }
+        $models = GetCarModels::wheremanufacturer_id($id)->get();
         return response()->json($models, 200);
-    }
-    
+    }    
 }
