@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Info;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Info\GetInfoController;
+use App\Http\Controllers\Info\CarsInfoController;
 use Illuminate\Http\Request;
 use App\Models\CarInfo\GetCarManufacturers;
 use App\Models\CarInfo\GetCarModels;
 
-class GetInfoController extends Controller
+class CarsInfoController extends Controller
 {
     public function manufactors(Request $request)
     {

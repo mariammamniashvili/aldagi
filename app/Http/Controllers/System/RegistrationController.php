@@ -29,27 +29,27 @@ class RegistrationController extends Controller
     }
     
 
-    public function system_login(Request $request)
-    {
-        $this->validate($request,[
-            'system_name'=>'required',
-            'password'=>'required'
-        ]);
+    // public function system_login(Request $request)
+    // {
+    //     $this->validate($request,[
+    //         'system_name'=>'required',
+    //         'password'=>'required'
+    //     ]);
         
-        if(!self::validateEmail($request->system_name)){
-            return response()->json('Please enter with email format', 400);
-        }
+    //     if(!self::validateEmail($request->system_name)){
+    //         return response()->json('Please enter with email format', 400);
+    //     }
         
-        $Login= new Registration;
-        $registered_system = Registration::wheresystem_name($request->system_name)->first();
-        if($registered_system == null) {
-            return response()->json('Incorect Email', 422);
-        } else if($registered_system->password != $request->password) {
-            return response()->json('Incorect Password', 422);
-        }
+    //     $Login= new Registration;
+    //     $registered_system = Registration::wheresystem_name($request->system_name)->first();
+    //     if($registered_system == null) {
+    //         return response()->json('Incorect Email', 401);
+    //     } else if($registered_system->password != $request->password) {
+    //         return response()->json('Incorect Password', 401);
+    //     }
 
-        return response()->json($registered_system->id, 200);
-    }
+    //     return response()->json($registered_system->id, 200);
+    // }
     
 
    
