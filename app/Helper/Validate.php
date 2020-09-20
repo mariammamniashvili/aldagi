@@ -2,7 +2,7 @@
 
 namespace App\Helper;
 use App\Models\User\Registration;
-
+use App\Models\System\Registrations;
 
 
 class Validate 
@@ -28,7 +28,7 @@ class Validate
         $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
         ? ((date("Y") - $birthDate[2]) - 1)
         : (date("Y") - $birthDate[2]));
-        //return ($birthDate);
+        
         return ($age > 18 || $age == 18);
     }
 
@@ -36,6 +36,15 @@ class Validate
     {
         $user_id=Registration::whereuser_id($user_id)->get();
         if(sizeof($user_id) > 0){
+            return false;
+        }
+        return true;
+    }
+
+    public static function CheckEmail($email)
+    {
+        $check_email=Registrations::wheresystem_name($email)->get();
+        if(sizeof($check_email) > 0){
             return false;
         }
         return true;

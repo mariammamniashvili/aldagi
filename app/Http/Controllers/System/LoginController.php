@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\System\Login;
 use App\Http\Controllers\System\RegistrationController;
-use App\Models\System\Registration;
+use App\Models\System\Registrations;
 use App\Helper\Validate;
 
 class LoginController extends Controller
