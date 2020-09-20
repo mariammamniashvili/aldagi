@@ -23,6 +23,6 @@ Route::post('Insurance/Register', 'User\RegistrationController@user_registration
 Route::post('Insurance/List', 'User\RegistrationController@users_list');
 Route::post('Refund/Maximum', 'Finance\FinanceController@max_limit');
 Route::get('Car/Categories', 'Info\CarsInfoController@manufactors');
-Route::get('CarModels/{id}', 'Info\CarsInfoController@models');
+Route::get('Car/Models/{id}', 'Info\CarsInfoController@models');
 Route::post('Login', 'System\LoginController@system_login');
 Route::post('Price', 'Finance\FinanceController@bonus');

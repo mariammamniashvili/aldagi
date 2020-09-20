@@ -26,7 +26,7 @@ class RegistrationController extends Controller
         ]);
         
         if(!Validate::validateEmail($request->email)){
-            return response()->json('Please enter with email format', 400);
+            return response()->json('Please enter correct email format', 400);
         }
         
         if(!Validate::validateAge($request->birthday)){

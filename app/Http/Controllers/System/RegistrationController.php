@@ -17,7 +17,7 @@ class RegistrationController extends Controller
         ]);
         
         if(!Validate::validateEmail($request->system_name)){
-            return response()->json('Please enter with email format', 400);
+            return response()->json('Please enter correct email format', 400);
         }
         
         $system_registrations= new Registration;
