@@ -28,4 +28,4 @@ Route::get('CarModels', 'Info\CarsInfoController@models');
 Route::get('MaxLimits', 'Finance\FinanceController@max_limit');
 Route::get('Bonus', 'Finance\FinanceController@bonus');
 Route::get('Users', 'User\RegistartionController@user_registration');
-Route::get('RegisterForm', 'User\RegistartionController@users_list');
+Route::get('UsersList', 'User\RegistartionController@users_list');

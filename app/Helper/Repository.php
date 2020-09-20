@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\User;
-
-use App\Http\Controllers\Controller;
+namespace App\Helper;
 use Illuminate\Http\Request;
-use App\Models\User\Registration;
 use App\Helper\Validate;
-class RegistartionController extends Controller
+class Repository 
 {
-    public function user_registration(Request $request)
+    public static function Registartion($request)
     {
        
-        $this->validate($request,[
+       $request->validate($request,[
             'system_id'=>'required',
             'first_name'=>'required',
             'last_name'=>'required',
@@ -26,10 +23,10 @@ class RegistartionController extends Controller
         ]);
         
         if(!Validate::validateEmail($request->email)){
-            return response()->json('Please enter with email format', 400);
+            return response()->json('Email validation failed', 400);
         }
         if(!Validate::validateAge($request->birthday)){
-            return response()->json('Must be more then 18', 400);
+            return response()->json('Age', 400);
         }
 
         $user_registrations= new Registration;
@@ -49,12 +46,24 @@ class RegistartionController extends Controller
         
         return response()->json('Created', 201);
     }
-    
-    public function users_list(Request $request)
+     
+    public static function validatePhone($phone)
     {
-       $users = Registration::wheresystem_id($request->system_id)->paginate($request->$page);;
-       return response()->json($users, 200);
+        return ($phone[0] == '5' && strlen($phone) == 9 && preg_match("/^[0-9]*$/i", $phone));
     }
 
-   
+    public static function validateId($user_id)
+    {
+        return (strlen($user_id) == 11 && preg_match("/^[0-9]*$/i", $user_id));
+    }
+
+    public static function validateAge($birthDate)
+    {
+        $birthDate = explode("/", $birthDate);
+        $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+        ? ((date("Y") - $birthDate[2]) - 1)
+        : (date("Y") - $birthDate[2]));
+        //return ($birthDate);
+        return ($age > 18 || $age == 18);
+    }
 }
