@@ -10,11 +10,12 @@ use App\Helper\Validate;
 class RegistrationController extends Controller
 {
     public function system_registration(Request $request)
-    {
-        $this->validate($request,[
+    { 
+        $this->validate($request, [
             'system_name'=>'required',
             'password'=>'required'
         ]);
+        
         
         if(!Validate::validateEmail($request->system_name)){
             return response()->json('Please enter correct email format', 400);
@@ -27,4 +28,9 @@ class RegistrationController extends Controller
         
         return response()->json('Created', 201);
     }
+
+    
 }
+
+
+
