@@ -21,4 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('test', 'Test\TestController@Test');
 Route::get('ebee/{id}', 'Test\TestController@Ebee');
 Route::post('gela', 'Test\TestController@Gela');
-Route::get('Registration', 'Registration\RegistrationController@system_registration');
+Route::get('Registration', 'System\RegistrationController@system_registration');
+Route::get('Login', 'System\LoginController@system_login');
+Route::get('GetManufactors', 'Info\GetInfoController@manufactors');
+Route::get('GetCarModels', 'Info\GetInfoController@models');
+Route::get('GetMaxLimit', 'Finance\FinanceController@max_limit');
+Route::get('Bonus', 'Finance\FinanceController@bonus');

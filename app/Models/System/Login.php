@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models\System;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Registration extends Model
+class Login extends Model
 {
    protected $table = 'external_system';
    public $primaryKey = 'id';
