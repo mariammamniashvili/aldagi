@@ -10,17 +10,68 @@ use App\Models\CarInfo\GetCarModels;
 
 class CarsInfoController extends Controller
 {
+    /**
+     * @OA\GET(
+     ** path="/api/Car/Categories",
+     *   tags={"Car/Categories"},
+     *   summary="Car/Categories",
+     *   operationId="Car/Categories",
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   )
+     *)
+     **/
+    /**
+     * login api
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function manufactors()
     {
         $manufacturers = GetCarManufacturers::all()->toArray();
         return response()->json($manufacturers, 200);
     }
-    
+
+   /**
+     * @OA\Get(
+     ** path="/api/Car/Models/{id}",
+        *   tags={"/api/Car/Models/{id}"},
+        *   summary="/Api/Login",
+        *   operationId="/Api/Login",
+        *
+        *   @OA\Parameter(
+        *      name="id",
+        *      in="query",
+        *      required=true,
+        *      @OA\Schema(
+        *           type="integer"
+        *      )
+        *   ),
+        *   @OA\Response(
+        *      response=200,
+        *       description="Success",
+        *      @OA\MediaType(
+        *           mediaType="application/json",
+        *      )
+        *   ),
+        *   @OA\Response(
+        *      response=400,
+        *      description="Incorect data"
+        *   )
+        *)
+        **/
+    /**
+     * login api
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function models($id)
     {
-        if(!is_int($id)) {
-            return response()->json('Incorect data', 400);
-        }
         $models = GetCarModels::wheremanufacturer_id($id)->get();
         return response()->json($models, 200);
     }    

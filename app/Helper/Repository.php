@@ -9,31 +9,8 @@ use App\Models\System\Registrations;
 
 class Repository 
 {
-
     public static function user_registration($request)
-    {       
-        
-        if(!Validate::CheckUserId($request->user_id)){
-            return response()->json('User Id Exist', 400);
-        }
-        
-        if(!Validate::CheckRegistrationNumber($request->registration_number)){
-            return response()->json('Car registration number exist', 400);
-        }
-
-        if(!Validate::validateId($request->user_id)){
-            return response()->json('User Id must be 11 digital number', 400);
-        }
-
-        if(!Validate::validateEmail($request->email)){
-            return response()->json('Please enter correct email format', 400);
-        }
-        
-        if(!Validate::validateAge($request->birthday)){
-            return response()->json('Must be more then 18', 400);
-        }
-        
-        
+    {   
         $user_registrations= new Registration;
         $user_registrations->system_id=$request->system_id;
         $user_registrations->first_name=$request->first_name;
@@ -50,29 +27,13 @@ class Repository
         $user_registrations->status=$request->status;
         
         $res = $user_registrations->save();
-        
-        return true;
     } 
 
-
     public static function system_registration($request)
-    { 
-        if(!Validate::CheckEmail($request->system_name)){
-            return response()->json('Email Exist', 400);
-        }
-
-        if(!Validate::validateEmail($request->system_name)){
-            return response()->json('Please enter correct email format', 400);
-        }
-        
+    {       
         $system_registrations= new Registrations;
         $system_registrations->system_name=$request->system_name;
         $system_registrations->password=$request->password;
         $res = $system_registrations->save();
-        
-        return response()->json('Created', 201);
     }
-
-   
-    
 }
