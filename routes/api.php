@@ -26,3 +26,5 @@ Route::get('Car/Categories', 'Info\CarsInfoController@manufactors');
 Route::get('Car/Models/{id}', 'Info\CarsInfoController@models');
 Route::post('Login', 'System\LoginController@system_login');
 Route::post('Price', 'Finance\FinanceController@bonus');
+Route::get('Delete/{id}', 'User\RegistrationController@update_delete_status');
+Route::get('Status/{id}/{status}', 'User\RegistrationController@update_status');

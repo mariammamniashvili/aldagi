@@ -21,5 +21,6 @@ class Registration extends Model
    protected $registration_number = 'registration_number';
    protected $photo = 'photo';
    protected $status = 'status';
+   protected $is_deleted = 'is_deleted'; 
    public $timestamps = true;
 }

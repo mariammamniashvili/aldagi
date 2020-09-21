@@ -33,7 +33,7 @@ class Validate
     }
 
     public static function CheckUserId($user_id)
-    {
+    { 
         $user_id=Registration::whereuser_id($user_id)->get();
         if(sizeof($user_id) > 0){
             return false;

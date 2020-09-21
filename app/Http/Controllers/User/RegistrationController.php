@@ -125,6 +125,14 @@ class RegistrationController extends Controller
      *          type="integer"
      *      )
      *   ),
+     *   @OA\Parameter(
+     *      name="is_deleted",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="integer"
+     *      )
+     *   ),
      *   @OA\Response(
      *      response=200,
      *       description="Success",
@@ -165,8 +173,9 @@ class RegistrationController extends Controller
             'issue_date'=>'required',
             'registration_number'=>'required',
             'photo' => 'required',
-            'status'=>'required'
-        ]);
+            'status'=>'required',
+            'is_deleted'=>'required'
+            ]);
         
         if(!Validate::CheckUserId($request->user_id)){
             return response()->json('User Id Exist', 400);
@@ -187,8 +196,8 @@ class RegistrationController extends Controller
         if(!Validate::validateAge($request->birthday)){
             return response()->json('Must be more then 18', 400);
         }
-
-        Repository::user_registration($request);
+        
+        // Repository::user_registration($request);
         return response()->json(Repository::user_registration($request), 201);
     }
             /**
@@ -234,4 +243,20 @@ class RegistrationController extends Controller
        $users = Registration::wheresystem_id($request->system_id)->paginate($request->page);
        return response()->json($users, 200);
     }   
+
+    public function update_delete_status(Request $request)
+    {
+       $is_deleted = Registration::where('id', '=', $request->id)->update(array('is_deleted' => 1));
+      
+       return response()->json($is_deleted, 200);
+    }   
+
+    public function update_status(Request $request)
+    {
+       $status = Registration::where('id', '=', $request->id)->update(array('status' => $request->status));
+      
+       return response()->json($status, 200);
+    }   
+
+   
 }
