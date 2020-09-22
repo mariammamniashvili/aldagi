@@ -72,7 +72,7 @@ class RegistrationController extends Controller
      *      in="query",
      *      required=true,
      *      @OA\Schema(
-     *          type="string"
+     *          type="integer"
      *      )
      *   ),
      *   @OA\Parameter(
@@ -80,7 +80,7 @@ class RegistrationController extends Controller
      *      in="query",
      *      required=true,
      *      @OA\Schema(
-     *          type="string"
+     *          type="integer"
      *      )
      *   ),
      *   @OA\Parameter(
@@ -172,11 +172,11 @@ class RegistrationController extends Controller
             'model'=>'required',
             'issue_date'=>'required',
             'registration_number'=>'required',
-            'photo' => 'required',
+            'photo' => 'required|max:2048',
             'status'=>'required',
             'is_deleted'=>'required'
-            ]);
-        
+            ]); 
+	
         if(!Validate::CheckUserId($request->user_id)){
             return response()->json('User Id Exist', 400);
         }
@@ -197,8 +197,8 @@ class RegistrationController extends Controller
             return response()->json('Must be more then 18', 400);
         }
         
-        // Repository::user_registration($request);
-        return response()->json(Repository::user_registration($request), 201);
+        Repository::user_registration($request);
+        return response()->json('Created', 201);
     }
             /**
      * @OA\Post(

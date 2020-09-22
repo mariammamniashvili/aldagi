@@ -33,13 +33,13 @@ class CarsInfoController extends Controller
      */
     public function manufactors()
     {
-        $manufacturers = GetCarManufacturers::all()->toArray();
+        $manufacturers = GetCarManufacturers::all();
         return response()->json($manufacturers, 200);
     }
 
    /**
      * @OA\Get(
-     ** path="/api/Car/Models/{id}",
+     ** path="/api/Car/Models",
         *   tags={"/api/Car/Models/{id}"},
         *   summary="/Api/Login",
         *   operationId="/Api/Login",
@@ -70,9 +70,9 @@ class CarsInfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function models($id)
+    public function models()
     {
-        $models = GetCarModels::wheremanufacturer_id($id)->get();
+        $models = GetCarModels::all();
         return response()->json($models, 200);
     }    
 }
