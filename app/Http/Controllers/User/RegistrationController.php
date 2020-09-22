@@ -118,6 +118,22 @@ class RegistrationController extends Controller
      *      )
      *   ),
      *   @OA\Parameter(
+     *      name="bonuce",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="price",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string"
+     *      )
+     *   ),
+     *   @OA\Parameter(
      *      name="status",
      *      in="query",
      *      required=true,
