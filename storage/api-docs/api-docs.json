@@ -90,7 +90,7 @@
                 }
             }
         },
-        "/api/Car/Models/{id}": {
+        "/api/Car/Models": {
             "get": {
                 "tags": [
                     "/api/Car/Models/{id}"
@@ -270,7 +270,7 @@
                         "in": "query",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "integer"
                         }
                     },
                     {
@@ -278,7 +278,7 @@
                         "in": "query",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "integer"
                         }
                     },
                     {
