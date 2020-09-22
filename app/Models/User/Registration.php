@@ -19,6 +19,8 @@ class Registration extends Model
    protected $model = 'model';
    protected $issue_date = 'issue_date';
    protected $registration_number = 'registration_number';
+   protected $bonuce = 'bonuce';
+   protected $price = 'price';
    protected $photo = 'photo';
    protected $status = 'status';
    protected $is_deleted = 'is_deleted'; 

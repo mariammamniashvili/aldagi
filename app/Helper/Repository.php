@@ -23,10 +23,13 @@ class Repository
         $user_registrations->model=$request->model;
         $user_registrations->issue_date=$request->issue_date;
         $user_registrations->registration_number=$request->registration_number;
+        $user_registrations->bonus=$request->bonuce;
+        $user_registrations->price=$request->price;
         $user_registrations->photo=$request->photo;
         $user_registrations->status=$request->status;
         $user_registrations->is_deleted=$request->is_deleted;
         $res = $user_registrations->save();
+        
     } 
 
     public static function system_registration($request)

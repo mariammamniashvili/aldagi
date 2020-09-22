@@ -172,6 +172,8 @@ class RegistrationController extends Controller
             'model'=>'required',
             'issue_date'=>'required',
             'registration_number'=>'required',
+            'bonuce'=>'required',
+            'price'=>'required',
             'photo' => 'required|max:2048',
             'status'=>'required',
             'is_deleted'=>'required'
@@ -198,6 +200,7 @@ class RegistrationController extends Controller
         }
         
         Repository::user_registration($request);
+        
         return response()->json('Created', 201);
     }
             /**

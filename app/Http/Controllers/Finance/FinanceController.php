@@ -94,7 +94,8 @@ class FinanceController extends Controller
      */
     public function bonus(Request $request)
     {        
-        $manufacturers = GetBonus::where([['external_system_id',$request->external_system_id],['max_limit_id',$request->max_limit_id]]);
+        $manufacturers = GetBonus::all();
+       //$manufacturers = GetBonus::join('GetLimit', 'id', '=', 'max_id');
         return response()->json($manufacturers, 200);
     }
 }
